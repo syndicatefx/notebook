@@ -1,0 +1,43 @@
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="handheldfriendly" content="true">
+	<meta name="mobileoptimized" content="320">
+	<title>Notebook</title>
+	<meta name="title" content="Notebook">
+	<meta name="description" content="An ultra-simple browser based text app using localstorage ">
+	<link rel="stylesheet" href="app.css">
+</head>
+
+<body>
+    <div class="notebook">
+
+        <aside>
+            <h2>Notebook</h2>
+            <div>
+                <input type="text" id="note-title" onfocus="removeTextarea()" onkeypress="if (event.key === 'Enter') createNote()" placeholder="type note title + press ENTER">
+            </div>
+
+            <ul id="note-list"></ul>
+
+        </aside>
+
+        <main>
+
+        </main>
+
+    </div>
+
+    <footer>
+        <a href="https://github.com/syndicatefx/notebook">Github</a>
+        <div>
+            ch:<span class="chars">0</span>
+        </div>
+    </footer>
+
+	<script src="app.js"></script>
+
+</body>
+</html>

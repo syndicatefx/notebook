@@ -1,0 +1,284 @@
+/*  Notebook - 1.0
+ *
+ *  File: app.css
+ *  Author: Paulo Nunes, http://syndicatefx.com
+ *  Source: https://github.com/syndicatefx/notebook
+ *  License: MIT
+ */
+:root {
+    --c0: #eee;
+    --c1: #888;
+    --c2: #444;
+    --c3: #086fdd;
+}
+
+::selection {
+    background: var(--c3);
+    color: var(--c0);
+}
+
+::-webkit-scrollbar {
+    width: 8px
+}
+::-webkit-scrollbar-track {
+    background: transparent;
+}
+::-webkit-scrollbar-thumb{
+    background-color: var(--c2);
+    border-radius: 6px;
+}
+
+*:focus {
+    outline: none;
+}
+
+html {
+    font-family: -apple-system, BlinkMacSystemFont, 'avenir next', avenir, 'helvetica neue', helvetica, ubuntu, roboto, noto, 'segoe ui', arial, sans-serif;
+    font-size: 100%;
+    block-size: 100%;
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
+    text-rendering: optimizeSpeed;
+    -webkit-text-size-adjust: 100%;
+    -ms-text-size-adjust: 100%;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    box-sizing: border-box;
+    scrollbar-width: thin;
+    scrollbar-color: var(--c2) transparent;
+}
+
+* {
+    box-sizing: inherit;
+    margin: 0;
+    padding: 0;
+}
+
+*:before, *:after {
+    box-sizing: inherit;
+    margin: 0;
+    padding: 0;
+}
+
+svg {
+    max-height: 100%;
+    pointer-events: none;
+}
+
+body {
+    font-size: 1rem;
+    font-weight: 400;
+    line-height: 1.6;
+    min-block-size: 100%;
+
+    background-color: var(--c0);
+    color: var(--c2);
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+}
+
+h1, h2, h3, h4, strong, dt {
+    font-size: inherit;
+    font-weight: inherit;
+}
+
+ul, ol {
+    list-style-position: inside;
+}
+
+input, textarea, select, button {
+    appearance: none;
+    font-family: inherit;
+    font-size: 100%;
+    line-height: inherit;
+    outline: none;
+    padding: .5rem 1rem;
+    background-color: transparent;
+    color: var(--c2);
+    box-shadow: none;
+    border: 0;
+    border-radius: 0;
+    transition: all .3s;
+}
+:is(input, button):focus,
+button:hover {
+    color: var(--c3);
+}
+
+button {
+    user-select: none;
+    -webkit-touch-callout: none;
+    text-transform: uppercase;
+    white-space: nowrap;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+}
+
+
+/*--- Notebook styles ---*/
+
+html {
+    overflow: hidden;
+}
+
+/*- layout -*/
+.notebook {
+    display: grid;
+    grid: [stack] 1fr/min-content [stack] 1fr;
+    height: 100vh;
+}
+
+@media (max-width: 1279px) {
+    aside, main {
+        grid-area: stack
+    }
+}
+
+@media (min-width: 1279px) {
+    aside {
+        min-width: 36rem;
+        max-width: 36rem;
+    }
+    main button {
+        display: none;
+    }
+}
+
+/*- sidebar stuff -*/
+aside {
+    width: 100%;
+    padding: 10vmin;
+    overflow-y: auto;
+    z-index: 2;
+    background-color: var(--c0);
+}
+
+h2 {
+    text-transform: uppercase;
+    letter-spacing: .25em;
+    margin-bottom: 2rem;
+    color: var(--c3);
+}
+
+aside > div {
+    max-width: 32rem;
+    display: flex;
+    align-items: center;
+    margin-bottom: 2rem;
+}
+
+input {
+    width: 95%;
+    background-image:
+    linear-gradient(0deg, var(--b, var(--c1)), var(--b, var(--c1)) 25%, transparent 25%, transparent 75%, var(--b, var(--c1)) 75%),
+    linear-gradient(90deg, var(--b, var(--c1)), var(--b, var(--c1)) 5%, transparent 5%, transparent 95%, var(--b, var(--c1)) 95%), 
+    linear-gradient(180deg, var(--b, var(--c1)), var(--b, var(--c1)) 25%, transparent 25%, transparent 75%, var(--b, var(--c1)) 75%),
+    linear-gradient(270deg, var(--b, var(--c1)), var(--b, var(--c1)) 5%, transparent 5%, transparent 95%, var(--b, var(--c1)) 95%)
+    ;
+    background-position:  0 0, 0 0, 100% 0, 0 100%;
+    background-size: 1px 100%, 100% 1px, 1px 100% , 100% 1px;
+    background-repeat: no-repeat;
+}
+input:focus {
+    --b: var(--c3);
+}
+
+ul {
+    max-width: 32rem;
+    list-style: none;
+    margin-bottom: 4rem;
+}
+
+li {
+    position: relative;
+    display: flex;
+    align-items: center;
+    margin-block: .5rem;
+}
+li > button:first-of-type {
+    width: 100%;
+    text-transform: none;
+    align-items: start;
+    justify-content: left;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    padding-inline: 0;
+}
+li > button:last-child, li > div button:first-child {
+    margin-left: auto;
+}
+
+li > button:last-child {
+    font-size: 1.5rem;
+    line-height: 1;
+}
+
+li > div {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    background-color: var(--c0);
+}
+
+/*- text edit stuff -*/
+main {
+    height: 100vh;
+}
+
+main > div {
+    position: relative; 
+    width: 100%;
+    height: 100%;
+    background-color: var(--c0);
+}
+
+main button {
+    position: absolute;
+    top: 0;
+    right: 0;
+    background-color: var(--c0);
+}
+
+textarea {
+    width: 100%;
+    height: calc(100vh - 80px);
+    padding: 10vmin;
+    resize: none;
+    caret-color: var(--c3);
+}
+
+/*- footer stuff -*/
+footer {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    z-index: 3;
+    display: flex;
+    justify-content: end;
+    width: 100%;
+    padding: 1rem 2rem;
+    background: var(--c0);
+}
+
+footer div {
+    text-transform: uppercase;
+    display: flex;
+    align-items: center;
+    color: var(--c1);
+}
+footer a {
+    text-decoration: none;
+    color: var(--c2);
+    margin-right: auto;
+}
+footer button {
+    padding-block: 0;
+}
