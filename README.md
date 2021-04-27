@@ -2,7 +2,7 @@
 
 An ultra-simple browser based text app using localstorage. Create, edit & delete multiple text notes, limited only by your browsers localStorage capacity.
 
-The successor, but not a replacement, of (https://github.com/syndicatefx/textpad)[TextPad]
+The successor, but not a replacement, of (TextPad)[https://github.com/syndicatefx/textpad]
 
 ## Usage
 
