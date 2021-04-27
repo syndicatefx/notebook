@@ -13,11 +13,7 @@
 // load everything
 if (localStorage.length != '') {
     listNotes();
-    document.querySelector(".info").style.display = "none";
-} else {
-    document.querySelector(".info").style.display = "";
 }
-
 // list notes
 function listNotes() {
     for (var i = 0; i < localStorage.length; i++) {
