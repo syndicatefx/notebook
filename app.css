@@ -12,6 +12,15 @@
     --c3: #086fdd;
 }
 
+@media (prefers-color-scheme: dark) {
+    :root {
+        --c0: #262626;
+        --c1: #666;
+        --c2: #aaa;
+        --c3: #04c4ff;
+    }
+}
+
 @font-face {
     font-family: "DMMono";
     src: url("DMMono-Light.woff2") format("woff2");
