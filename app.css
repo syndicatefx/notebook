@@ -5,20 +5,13 @@
  *  Source: https://github.com/syndicatefx/notebook
  *  License: MIT
  */
-:root {
-    --c0: #eee;
-    --c1: #888;
-    --c2: #444;
-    --c3: #086fdd;
-}
-
-@media (prefers-color-scheme: dark) {
-    :root {
-        --c0: #262626;
-        --c1: #666;
-        --c2: #aaa;
-        --c3: #04c4ff;
-    }
+ :root {
+    --brand: #e47464;
+    --hilight: #fff;
+    --bg: #29272b;
+    --bg2: #201e21;
+    --fg: #b5b5b5;
+    --fg2: #66606b;
 }
 
 @font-face {
@@ -28,58 +21,46 @@
     font-style: normal;
     font-display: swap;
 }
-
 ::selection {
-    background: var(--c3);
-    color: var(--c0);
+    background-color: var(--bg2);
 }
-
+  
 ::-webkit-scrollbar {
-    width: 8px
+width: 8px
 }
 ::-webkit-scrollbar-track {
-    background: transparent;
+background: transparent;
 }
 ::-webkit-scrollbar-thumb{
-    background-color: var(--c2);
-    border-radius: 6px;
-}
-
-*:focus {
-    outline: none;
+background-color: var(--brand);
+border-radius: 6px;
 }
 
 html {
-    font-family: "DMMono", monospace;
-    font-size: 100%;
-    block-size: 100%;
-    overflow-y: auto;
-    -webkit-overflow-scrolling: touch;
-    text-rendering: optimizeSpeed;
-    -webkit-text-size-adjust: 100%;
-    -ms-text-size-adjust: 100%;
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
-    box-sizing: border-box;
-    scrollbar-width: thin;
-    scrollbar-color: var(--c2) transparent;
+font-family: "DMMono", monospace;
+font-size: 100%;
+block-size: 100%;
+overflow-y: auto;
+-webkit-overflow-scrolling: touch;
+text-rendering: optimizeSpeed;
+-webkit-text-size-adjust: 100%;
+-ms-text-size-adjust: 100%;
+-webkit-font-smoothing: antialiased;
+-moz-osx-font-smoothing: grayscale;
+box-sizing: border-box;
+scrollbar-width: thin;
+scrollbar-color: var(--brand) transparent;
 }
 
-* {
-    box-sizing: inherit;
-    margin: 0;
-    padding: 0;
-}
-
-*:before, *:after {
-    box-sizing: inherit;
-    margin: 0;
-    padding: 0;
+* , *:before, *:after {
+box-sizing: inherit;
+margin: 0;
+padding: 0;
 }
 
 svg {
-    max-height: 100%;
-    pointer-events: none;
+max-height: 100%;
+pointer-events: none;
 }
 
 body {
@@ -89,42 +70,41 @@ body {
     font-feature-settings: "ss05" on, "ss04" on, "ss01" on;
     min-block-size: 100%;
 
-    background-color: var(--c0);
-    color: var(--c2);
+    background-color: var(--bg);
+    color: var(--fg);
 }
 
-img {
-    max-width: 100%;
-    height: auto;
-}
-
-h1, h2, h3, h4, strong, dt {
+h1 {
     font-size: inherit;
     font-weight: inherit;
+    text-transform: uppercase;
+    letter-spacing: .15em;
+    margin-bottom: 2rem;
+    color: var(--brand);
 }
 
-ul, ol {
-    list-style-position: inside;
-}
-
-input, textarea, select, button {
+button,
+input,
+select,
+textarea {
     appearance: none;
     font-family: inherit;
     font-size: 100%;
     line-height: inherit;
     font-feature-settings: "ss05" on, "ss04" on, "ss01" on;
     outline: none;
-    padding: .5rem 1rem;
+    padding: 0.5rem 1rem;
     background-color: transparent;
-    color: var(--c2);
+    color: var(--fg);
     box-shadow: none;
     border: 0;
     border-radius: 0;
-    transition: all .3s;
+    transition: all 0.3s;
 }
+
 :is(input, button):focus,
 button:hover {
-    color: var(--c3);
+    color: var(--brand);
 }
 
 button {
@@ -138,26 +118,20 @@ button {
     cursor: pointer;
 }
 
-
-/*--- Notebook styles ---*/
-
 html {
     overflow: hidden;
 }
-
-/*- layout -*/
 .notebook {
     display: grid;
     grid: [stack] 1fr/min-content [stack] 1fr;
     height: 100vh;
 }
-
 @media (max-width: 1279px) {
-    aside, main {
-        grid-area: stack
+    aside,
+    main {
+        grid-area: stack;
     }
 }
-
 @media (min-width: 1279px) {
     aside {
         min-width: 36rem;
@@ -167,57 +141,45 @@ html {
         display: none;
     }
 }
-
-/*- sidebar stuff -*/
 aside {
     width: 100%;
     padding: 10vmin;
     overflow-y: auto;
     z-index: 2;
-    background-color: var(--c0);
+    background-color: var(--bg);
 }
-
 h2 {
     text-transform: uppercase;
-    letter-spacing: .25em;
+    letter-spacing: 0.25em;
     margin-bottom: 2rem;
-    color: var(--c3);
+    color: var(--fg2);
 }
-
 aside > div {
     max-width: 32rem;
     display: flex;
     align-items: center;
     margin-bottom: 2rem;
 }
-
 input {
     width: 95%;
-    background-image:
-    linear-gradient(0deg, var(--b, var(--c1)), var(--b, var(--c1)) 25%, transparent 25%, transparent 75%, var(--b, var(--c1)) 75%),
-    linear-gradient(90deg, var(--b, var(--c1)), var(--b, var(--c1)) 5%, transparent 5%, transparent 95%, var(--b, var(--c1)) 95%), 
-    linear-gradient(180deg, var(--b, var(--c1)), var(--b, var(--c1)) 25%, transparent 25%, transparent 75%, var(--b, var(--c1)) 75%),
-    linear-gradient(270deg, var(--b, var(--c1)), var(--b, var(--c1)) 5%, transparent 5%, transparent 95%, var(--b, var(--c1)) 95%)
-    ;
-    background-position:  0 0, 0 0, 100% 0, 0 100%;
+    background-image: linear-gradient(0deg, var(--b, var(--fg2)), var(--b, var(--fg2)) 25%, transparent 25%, transparent 75%, var(--b, var(--fg2)) 75%), linear-gradient(90deg, var(--b, var(--fg2)), var(--b, var(--fg2)) 5%, transparent 5%, transparent 95%, var(--b, var(--fg2)) 95%), linear-gradient(180deg, var(--b, var(--fg2)), var(--b, var(--fg2)) 25%, transparent 25%, transparent 75%, var(--b, var(--fg2)) 75%), linear-gradient(270deg, var(--b, var(--fg2)), var(--b, var(--fg2)) 5%, transparent 5%, transparent 95%, var(--b, var(--fg2)) 95%);
+    background-position: 0 0, 0 0, 100% 0, 0 100%;
     background-size: 1px 100%, 100% 1px, 1px 100% , 100% 1px;
     background-repeat: no-repeat;
 }
 input:focus {
-    --b: var(--c3);
+    --b: var(--brand);
 }
-
 ul {
     max-width: 32rem;
     list-style: none;
     margin-bottom: 4rem;
 }
-
 li {
     position: relative;
     display: flex;
     align-items: center;
-    margin-block: .5rem;
+    margin-block: 0.5rem;
 }
 li > button:first-of-type {
     width: 100%;
@@ -229,52 +191,44 @@ li > button:first-of-type {
     text-overflow: ellipsis;
     padding-inline: 0;
 }
-li > button:last-child, li > div button:first-child {
+li > button:last-child,
+li > div button:first-child {
     margin-left: auto;
 }
-
 li > button:last-child {
     font-size: 1.5rem;
     line-height: 1;
 }
-
 li > div {
     position: absolute;
     width: 100%;
     height: 100%;
     display: flex;
     align-items: center;
-    background-color: var(--c0);
+    background-color: var(--bg);
 }
-
-/*- text edit stuff -*/
 main {
     height: 100vh;
 }
-
 main > div {
-    position: relative; 
+    position: relative;
     width: 100%;
     height: 100%;
-    background-color: var(--c0);
+    background-color: var(--bg);
 }
-
 main button {
     position: absolute;
     top: 0;
     right: 0;
-    background-color: var(--c0);
+    background-color: var(--bg);
 }
-
 textarea {
     width: 100%;
     height: calc(100vh - 80px);
     padding: 10vmin;
     resize: none;
-    caret-color: var(--c3);
+    caret-color: var(--brand);
 }
-
-/*- footer stuff -*/
 footer {
     position: fixed;
     bottom: 0;
@@ -284,18 +238,17 @@ footer {
     justify-content: end;
     width: 100%;
     padding: 1rem 2rem;
-    background: var(--c0);
+    background: var(--bg);
 }
-
 footer div {
     text-transform: uppercase;
     display: flex;
     align-items: center;
-    color: var(--c1);
+    color: var(--fg2);
 }
 footer a {
     text-decoration: none;
-    color: var(--c2);
+    color: var(--brand);
     margin-right: auto;
 }
 footer button {
