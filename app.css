@@ -14,60 +14,52 @@
     --fg2: #66606b;
 }
 
-@font-face {
-    font-family: "DMMono";
-    src: url("DMMono-Light.woff2") format("woff2");
-    font-weight: 300;
-    font-style: normal;
-    font-display: swap;
-}
 ::selection {
     background-color: var(--bg2);
 }
   
 ::-webkit-scrollbar {
-width: 8px
+    width: 8px
 }
 ::-webkit-scrollbar-track {
-background: transparent;
+    background: transparent;
 }
 ::-webkit-scrollbar-thumb{
-background-color: var(--brand);
-border-radius: 6px;
+    background-color: var(--brand);
+    border-radius: 6px;
 }
 
 html {
-font-family: "DMMono", monospace;
-font-size: 100%;
-block-size: 100%;
-overflow-y: auto;
--webkit-overflow-scrolling: touch;
-text-rendering: optimizeSpeed;
--webkit-text-size-adjust: 100%;
--ms-text-size-adjust: 100%;
--webkit-font-smoothing: antialiased;
--moz-osx-font-smoothing: grayscale;
-box-sizing: border-box;
-scrollbar-width: thin;
-scrollbar-color: var(--brand) transparent;
+    font-family:system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,Cantarell,Noto Sans,sans-serif;
+    font-size: 100%;
+    block-size: 100%;
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
+    text-rendering: optimizeSpeed;
+    -webkit-text-size-adjust: 100%;
+    -ms-text-size-adjust: 100%;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    box-sizing: border-box;
+    scrollbar-width: thin;
+    scrollbar-color: var(--brand) transparent;
 }
 
 * , *:before, *:after {
-box-sizing: inherit;
-margin: 0;
-padding: 0;
+    box-sizing: inherit;
+    margin: 0;
+    padding: 0;
 }
 
 svg {
-max-height: 100%;
-pointer-events: none;
+    max-height: 100%;
+    pointer-events: none;
 }
 
 body {
     font-size: 1rem;
     font-weight: 300;
-    line-height: 1.6;
-    font-feature-settings: "ss05" on, "ss04" on, "ss01" on;
+    line-height: 1.5;
     min-block-size: 100%;
 
     background-color: var(--bg);
@@ -91,7 +83,6 @@ textarea {
     font-family: inherit;
     font-size: 100%;
     line-height: inherit;
-    font-feature-settings: "ss05" on, "ss04" on, "ss01" on;
     outline: none;
     padding: 0.5rem 1rem;
     background-color: transparent;
