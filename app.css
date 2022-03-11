@@ -6,43 +6,60 @@
  *  License: MIT
  */
  :root {
-    --brand: #e47464;
-    --hilight: #fff;
-    --bg: #29272b;
-    --bg2: #201e21;
-    --fg: #b5b5b5;
-    --fg2: #66606b;
+    --brand: #376ed7;
+    --bg: #f9f9f9;
+    --muted: #f1f1f1;
+    --text: #333;
+}
+
+@media (prefers-color-scheme: dark) {
+    :root {
+        --brand: #376ed7;
+        --bg: #161616;
+        --muted: #222;
+        --text: #999;
+    }
+}
+
+@font-face {
+    font-family: 'IBMPlexMono';
+    font-weight: 400;
+    font-style: normal;
+    src: url("IBMPlexMono-Regular.woff2") format("woff2");
+    font-display: swap;
 }
 
 ::selection {
-    background-color: var(--bg2);
+    background-color: var(--muted);
 }
   
-::-webkit-scrollbar {
-    width: 8px
+:is(aside, textarea)::-webkit-scrollbar {
+    width: 10px
 }
-::-webkit-scrollbar-track {
+:is(aside, textarea)::-webkit-scrollbar-track {
     background: transparent;
 }
-::-webkit-scrollbar-thumb{
+:is(aside, textarea)::-webkit-scrollbar-thumb{
     background-color: var(--brand);
+    border: 2px solid var(--bg);
     border-radius: 6px;
+}
+:is(aside, textarea) {
+    scrollbar-width: thin;
+    scrollbar-color: var(--brand) transparent;
 }
 
 html {
-    font-family: system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, Cantarell, Noto Sans, sans-serif;
+    font-family: "IBMPlexMono", monospace;
     font-size: 100%;
     block-size: 100%;
-    overflow-y: auto;
+    overflow-y: hidden;
     -webkit-overflow-scrolling: touch;
     text-rendering: optimizeSpeed;
-    -webkit-text-size-adjust: 100%;
-    -ms-text-size-adjust: 100%;
+    -webkit-text-size-adjust: none;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     box-sizing: border-box;
-    scrollbar-width: thin;
-    scrollbar-color: var(--brand) transparent;
 }
 
 * , *:before, *:after {
@@ -51,33 +68,25 @@ html {
     padding: 0;
 }
 
-svg {
-    max-height: 100%;
-    pointer-events: none;
-}
-
 body {
     font-size: 1rem;
-    font-weight: 300;
+    font-weight: 400;
     line-height: 1.5;
     min-block-size: 100%;
-
     background-color: var(--bg);
-    color: var(--fg);
+    color: var(--text);
 }
 
-h1 {
-    font-size: inherit;
-    font-weight: inherit;
-    text-transform: uppercase;
-    letter-spacing: .15em;
-    margin-bottom: 2rem;
-    color: var(--brand);
+svg {
+    max-block-size: 100%;
+    pointer-events: none;
+    display: block;
+    margin-block: 2rem;
+    margin-inline: auto;
 }
 
 button,
 input,
-select,
 textarea {
     appearance: none;
     font-family: inherit;
@@ -86,16 +95,23 @@ textarea {
     outline: none;
     padding: 0.5rem 1rem;
     background-color: transparent;
-    color: var(--fg);
+    color: var(--text);
     box-shadow: none;
     border: 0;
     border-radius: 0;
-    transition: all 0.3s;
 }
 
-:is(input, button):focus,
-button:hover {
-    color: var(--brand);
+label, input {
+    display: block;
+    inline-size: min(100%, 24rem);
+    margin-block-end: 2rem;
+    margin-inline: auto;
+}
+
+label {
+    font-size: .875rem;
+    text-align: center;
+    margin-block-end: .5rem;
 }
 
 button {
@@ -107,73 +123,53 @@ button {
     align-items: center;
     justify-content: center;
     cursor: pointer;
+    transition: color 0.3s;
 }
 
-html {
-    overflow: hidden;
+button:focus,
+button:hover {
+    color: var(--brand);
 }
+
+input {
+    background-color: var(--muted);
+    border-radius: 2rem;
+    box-shadow: inset 0 0 2px hsl(0 0% 0% / 15%);
+}
+
+input:focus {
+    box-shadow: 0 0 0 2px var(--brand);
+}
+
+
 .notebook {
-    display: grid;
-    grid: [stack] 1fr/min-content [stack] 1fr;
-    height: 100vh;
+    block-size: 100vh;
 }
-@media (max-width: 1279px) {
-    aside,
-    main {
-        grid-area: stack;
-    }
-}
-@media (min-width: 1279px) {
-    aside {
-        min-width: 36rem;
-        max-width: 36rem;
-    }
-    main button {
-        display: none;
-    }
-}
+
 aside {
-    width: 100%;
-    padding: 10vmin;
+    inline-size: 100%;
+    block-size: 100%;
+    padding: 10vmin 5vw;
     overflow-y: auto;
-    z-index: 2;
     background-color: var(--bg);
 }
-h2 {
-    text-transform: uppercase;
-    letter-spacing: 0.25em;
-    margin-bottom: 2rem;
-    color: var(--fg2);
-}
-aside > div {
-    max-width: 32rem;
-    display: flex;
-    align-items: center;
-    margin-bottom: 2rem;
-}
-input {
-    width: 95%;
-    background-image: linear-gradient(0deg, var(--b, var(--fg2)), var(--b, var(--fg2)) 25%, transparent 25%, transparent 75%, var(--b, var(--fg2)) 75%), linear-gradient(90deg, var(--b, var(--fg2)), var(--b, var(--fg2)) 5%, transparent 5%, transparent 95%, var(--b, var(--fg2)) 95%), linear-gradient(180deg, var(--b, var(--fg2)), var(--b, var(--fg2)) 25%, transparent 25%, transparent 75%, var(--b, var(--fg2)) 75%), linear-gradient(270deg, var(--b, var(--fg2)), var(--b, var(--fg2)) 5%, transparent 5%, transparent 95%, var(--b, var(--fg2)) 95%);
-    background-position: 0 0, 0 0, 100% 0, 0 100%;
-    background-size: 1px 100%, 100% 1px, 1px 100% , 100% 1px;
-    background-repeat: no-repeat;
-}
-input:focus {
-    --b: var(--brand);
-}
+
 ul {
-    max-width: 32rem;
+    max-width: 24rem;
     list-style: none;
-    margin-bottom: 4rem;
+    margin-block-end: 4rem;
+    margin-inline: auto;
 }
+
 li {
     position: relative;
     display: flex;
     align-items: center;
     margin-block: 0.5rem;
 }
+
 li > button:first-of-type {
-    width: 100%;
+    inline-size: 100%;
     text-transform: none;
     align-items: start;
     justify-content: left;
@@ -182,44 +178,53 @@ li > button:first-of-type {
     text-overflow: ellipsis;
     padding-inline: 0;
 }
+
 li > button:last-child,
 li > div button:first-child {
-    margin-left: auto;
+    margin-inline-start: auto;
 }
+
 li > button:last-child {
     font-size: 1.5rem;
     line-height: 1;
 }
+
 li > div {
     position: absolute;
-    width: 100%;
-    height: 100%;
+    inline-size: 100%;
+    block-size: 100%;
     display: flex;
     align-items: center;
     background-color: var(--bg);
 }
+
 main {
-    height: 100vh;
+    block-size: 100vh;
 }
+
 main > div {
     position: relative;
-    width: 100%;
-    height: 100%;
+    inline-size: 100%;
+    block-size: 100%;
     background-color: var(--bg);
 }
+
 main button {
     position: absolute;
     top: 0;
     right: 0;
     background-color: var(--bg);
 }
+
 textarea {
-    width: 100%;
-    height: calc(100vh - 80px);
-    padding: 10vmin;
+    line-height: 1.65;
+    inline-size: 100%;
+    block-size: calc(100vh - 80px);
+    padding: 10vmin max(1rem, 50vw - 60ch / 2);
     resize: none;
     caret-color: var(--brand);
 }
+
 footer {
     position: fixed;
     bottom: 0;
@@ -227,21 +232,24 @@ footer {
     z-index: 3;
     display: flex;
     justify-content: end;
-    width: 100%;
-    padding: 1rem 2rem;
-    background: var(--bg);
+    inline-size: 100%;
+    padding: 1rem;
+    background: var(--muted);
+    box-shadow: inset -1px 0 2px hsl(0 0% 0% / 15%);
 }
+
 footer div {
     text-transform: uppercase;
     display: flex;
     align-items: center;
-    color: var(--fg2);
 }
+
 footer a {
     text-decoration: none;
     color: var(--brand);
-    margin-right: auto;
+    margin-inline-end: auto;
 }
+
 footer button {
     padding-block: 0;
 }

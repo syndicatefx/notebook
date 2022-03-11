@@ -42,8 +42,8 @@ function listNotes() {
 // create a editor view to write note content
 function viewNote(e) {
     var itemKey = e;
-    // change list z-index on small screens so the textarea is visible in the viewport
-    document.querySelector("aside").style.zIndex = "0";
+    // change display so textarea is visible in the viewport
+    document.querySelector("aside").style.display = "none";
     // if any editors are open, remove them
     removeTextarea();
     // build a new editor view
@@ -54,9 +54,9 @@ function viewNote(e) {
     closeTxt = document.createTextNode("Close");
     editorClose.appendChild(closeTxt);
     editor.appendChild(editorClose);
-    // the close button removes the editor + resets char counter on small screens
+    // the close button removes the editor + resets char counter
     editorClose.onclick = removeTextarea;
-    // add a textarea to editor window and fill with item value, or placeholder if a value does not exists yet
+    // add a textarea to editor window and fill with item value, or placeholder if a value does not exist yet
     var text = document.createElement("textarea");
     text.setAttribute("placeholder", "Start writing...");
     text.setAttribute("spellcheck", "false");
@@ -93,7 +93,7 @@ function trashNote(e) {
     // add alert text
     var dialogText = document.createTextNode("Delete this note?");
     dialog.appendChild(dialogText); 
-    // add buttons to confirm user wants to delete nnote
+    // add buttons to confirm user wants to delete note
     var yesBtn = document.createElement("button");
     var yesText = document.createTextNode("YES");
     yesBtn.appendChild(yesText);
@@ -123,8 +123,8 @@ function trashNote(e) {
 function removeTextarea() {
     if(document.querySelector(".editor")) {
         document.querySelector(".editor").remove();
-        // add list z-index back on small screens
-        document.querySelector("aside").style.zIndex = "2";
+        // add list display back on screen
+        document.querySelector("aside").style.display = "block";
         // reset char count to 0
         document.querySelector(".chars").innerHTML = "0";
         // remove dowload button

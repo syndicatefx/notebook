@@ -7,7 +7,7 @@
 	<meta name="mobileoptimized" content="320">
 	<title>Notebook</title>
 	<meta name="title" content="Notebook">
-	<meta name="description" content="An ultra-simple browser based text app using localstorage ">
+	<meta name="description" content="An ultra-simple browser based text app using localstorage">
 	<link rel="stylesheet" href="app.css">
 </head>
 
@@ -15,18 +15,13 @@
     <div class="notebook">
 
         <aside>
-            <h1>Notebook</h1>
-            <div>
-                <input type="text" id="note-title" onfocus="removeTextarea()" onkeypress="if (event.key === 'Enter') createNote()" placeholder="type note title + press ENTER">
-            </div>
-
+            <svg viewBox="0 0 24 24" width="32" height="32" fill="currentColor"><path d="M21 4H7a2 2 0 1 0 0 4h14v13a1 1 0 0 1-1 1H7a4 4 0 0 1-4-4V6a4 4 0 0 1 4-4h13a1 1 0 0 1 1 1v1zM5 18a2 2 0 0 0 2 2h12V10H7a3.982 3.982 0 0 1-2-.535V18zM20 7H7a1 1 0 1 1 0-2h13v2z"/></svg>
+            <label>Enter note title</label>
+            <input type="text" id="note-title" onfocus="removeTextarea()" onkeypress="if (event.key === 'Enter') createNote()" placeholder="type note title + hit Enter">
             <ul id="note-list"></ul>
-
         </aside>
 
-        <main>
-
-        </main>
+        <main></main>
 
     </div>
 
