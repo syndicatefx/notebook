@@ -6,19 +6,13 @@
  *  License: MIT
  */
  :root {
-    --brand: #376ed7;
-    --bg: #f9f9f9;
-    --muted: #f1f1f1;
-    --text: #333;
-}
-
-@media (prefers-color-scheme: dark) {
-    :root {
-        --brand: #376ed7;
-        --bg: #161616;
-        --muted: #222;
-        --text: #999;
-    }
+	--bg: #f9f9f9;
+	--bg-muted: #f7f7f7;
+	--text: #333;
+	--border: #ddd;
+	--shadow: 0 5px 12px -5px hsl(0 0% 0% / 15%);
+	--shadow-inset: inset 0 0 10px hsl(0 0% 0% / 5%);
+	--focus-ring: hsl(0 0% 0% / 5%);
 }
 
 @font-face {
@@ -30,7 +24,12 @@
 }
 
 ::selection {
-    background-color: var(--muted);
+    background-color: var(--bg-muted);
+}
+
+:focus {
+	outline: 3px solid transparent;
+	box-shadow: 0 0 0 4px var(--focus-ring);
 }
   
 :is(aside, textarea)::-webkit-scrollbar {
@@ -40,13 +39,13 @@
     background: transparent;
 }
 :is(aside, textarea)::-webkit-scrollbar-thumb{
-    background-color: var(--brand);
+    background-color: var(--text);
     border: 2px solid var(--bg);
     border-radius: 6px;
 }
 :is(aside, textarea) {
     scrollbar-width: thin;
-    scrollbar-color: var(--brand) transparent;
+    scrollbar-color: var(--text) transparent;
 }
 
 html {
@@ -85,60 +84,68 @@ svg {
     margin-inline: auto;
 }
 
-button,
-input,
-textarea {
-    appearance: none;
-    font-family: inherit;
-    font-size: 100%;
-    line-height: inherit;
-    outline: none;
-    padding: 0.5rem 1rem;
-    background-color: transparent;
-    color: var(--text);
-    box-shadow: none;
-    border: 0;
-    border-radius: 0;
-}
-
 label, input {
-    display: block;
-    inline-size: min(100%, 24rem);
-    margin-block-end: 2rem;
+	display: block;
+    max-inline-size: 24rem;
     margin-inline: auto;
 }
 
-label {
-    font-size: .875rem;
-    text-align: center;
-    margin-block-end: .5rem;
+input, button, textarea {
+	font: inherit;
+	font-size: inherit;
+	color: inherit;
+	letter-spacing: inherit;
 }
-
-button {
-    user-select: none;
-    -webkit-touch-callout: none;
-    text-transform: uppercase;
-    white-space: nowrap;
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    cursor: pointer;
-    transition: color 0.3s;
-}
-
-button:focus,
-button:hover {
-    color: var(--brand);
+input, button {
+	padding-inline: .75rem;
+	padding-block: .5rem;
+    border-radius: .25rem;
+	border: 1px solid var(--border);
 }
 
 input {
-    background-color: var(--muted);
-    border-radius: 2rem;
-    box-shadow: inset 0 0 2px hsl(0 0% 0% / 15%);
+    inline-size: 100%;
+    margin-block-end: 2rem;
+	background-color: var(--bg-muted);
+	border: 1px solid var(--border);
+	box-shadow: var(--shadow-inset);
 }
 
-input:focus {
-    box-shadow: 0 0 0 2px var(--brand);
+button {
+	user-select: none;
+	-webkit-tap-highlight-color: transparent;
+	-webkit-touch-callout: none;
+	display: inline-flex;
+	justify-content: center;
+	align-items: center;
+	text-align: center;
+	gap: .5rem;
+	padding-inline: .5rem;
+	padding-block: .25rem;
+	cursor: pointer;
+    background-color: var(--bg);
+	box-shadow: var(--shadow);
+}
+
+main button {
+    position: absolute;
+    top: .5rem;
+    right: .5rem;
+}
+
+textarea {
+    line-height: 1.65;
+    inline-size: 100%;
+    block-size: calc(100vh - 58px);
+    padding: 10vmin max(1rem, 50vw - 60ch / 2);
+    resize: none;
+    caret-color: var(--text);
+    border: 0;
+}
+
+textarea:focus {
+    outline: none;
+    box-shadow: none;
 }
 
 
@@ -155,7 +162,7 @@ aside {
 }
 
 ul {
-    max-width: 24rem;
+    max-inline-size: 24rem;
     list-style: none;
     margin-block-end: 4rem;
     margin-inline: auto;
@@ -165,18 +172,19 @@ li {
     position: relative;
     display: flex;
     align-items: center;
-    margin-block: 0.5rem;
+    gap: .5rem;
+    margin-block: .5rem;
 }
 
 li > button:first-of-type {
     inline-size: 100%;
-    text-transform: none;
     align-items: start;
     justify-content: left;
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
-    padding-inline: 0;
+    border: 0;
+    box-shadow: none;
 }
 
 li > button:last-child,
@@ -195,6 +203,8 @@ li > div {
     block-size: 100%;
     display: flex;
     align-items: center;
+    gap: .5rem;
+    padding-block: 1.5rem;
     background-color: var(--bg);
 }
 
@@ -209,47 +219,28 @@ main > div {
     background-color: var(--bg);
 }
 
-main button {
-    position: absolute;
-    top: 0;
-    right: 0;
-    background-color: var(--bg);
-}
-
-textarea {
-    line-height: 1.65;
-    inline-size: 100%;
-    block-size: calc(100vh - 80px);
-    padding: 10vmin max(1rem, 50vw - 60ch / 2);
-    resize: none;
-    caret-color: var(--brand);
-}
-
 footer {
     position: fixed;
     bottom: 0;
     left: 0;
     z-index: 3;
     display: flex;
+    align-items: center;
     justify-content: end;
     inline-size: 100%;
     padding: 1rem;
-    background: var(--muted);
+    background: var(--bg-muted);
     box-shadow: inset -1px 0 2px hsl(0 0% 0% / 15%);
 }
 
 footer div {
-    text-transform: uppercase;
     display: flex;
     align-items: center;
+    gap: .5rem;
 }
 
 footer a {
     text-decoration: none;
-    color: var(--brand);
+    color: var(--text);
     margin-inline-end: auto;
-}
-
-footer button {
-    padding-block: 0;
 }

@@ -95,11 +95,11 @@ function trashNote(e) {
     dialog.appendChild(dialogText); 
     // add buttons to confirm user wants to delete note
     var yesBtn = document.createElement("button");
-    var yesText = document.createTextNode("YES");
+    var yesText = document.createTextNode("Yes");
     yesBtn.appendChild(yesText);
     dialog.appendChild(yesBtn); 
     var noBtn = document.createElement("button");
-    var noText = document.createTextNode("NO");
+    var noText = document.createTextNode("No");
     noBtn.appendChild(noText);
     dialog.appendChild(noBtn); 
     // display the dialog over the list item
