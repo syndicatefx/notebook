@@ -7,7 +7,6 @@ The successor, but not a replacement, of [TextPad](https://github.com/syndicatef
 ## Usage
 
 - Type yout note title in the input field and press ENTER
-- Your note title will appear listed and you can start writing on the textarea on the right
 - Click on the note title to access the note content to edit anytime
 - Click the `x` following the note title to delete that note, you will be prompted to confirm deletion
 - When writing/editing a note you have a char counter and a DOWNLOAD NOTE button on the bottom right corner of the screen
