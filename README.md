@@ -17,6 +17,4 @@ Make sure to download all your notes if you intend on clearing your browsers sto
 
 I built this tool for my personal usage, it does the the job of keeping text i write or copy/paste into it for future reference while browsing online. It is not meant to be a full blown texteditor or document creator with thousands of features and settings. Enjoy!
 
-I built this tool for my personal usage, it does the the job of keeping text i write or copy/paste into it for future reference while browsing online. It is not meant to be a full blown texteditor or document creator with thousands of features and settings. 
-
 Enjoy!
