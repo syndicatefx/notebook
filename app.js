@@ -1,7 +1,7 @@
 /*  Notebook - 1.0
  *
  *  File: app.js
- *  Author: Paulo Nunes, http://syndicatefx.com
+ *  Author: Paulo Nunes
  *  Source: https://github.com/syndicatefx/notebook
  *  License: MIT
  */
